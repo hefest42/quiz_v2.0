@@ -41,5 +41,41 @@ nav {
     vertical-align: middle;
     border-radius: 10px;
     font-size: 20px;
-    
+}
+
+/* quiz container */
+
+.quiz-container {
+    background-color: teal;
+    width: 60%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    display: flex;
+}
+
+.quiz-questions {
+    background-color: tomato;
+    flex: 1;
+    width: 50%;
+    height: 100%;
+}
+
+.quiz-info {
+    background-color: orange;
+    width: 30%;
+    height: 100%;
+}
+
+/* quiz question and answer options */
+
+.question {
+    text-align: center;
+    margin: 50px 10px 50px 10px
+}
+
+.options {
+    padding: 20px 30px;
+    background-color: orchid;
 }
