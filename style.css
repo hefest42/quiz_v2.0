@@ -20,6 +20,7 @@ nav {
 }
 
 .welcome-msg {
+    font-size: 1.25rem;
     margin-left: 35px;
 }
 
@@ -78,7 +79,7 @@ nav {
 .question {
     width: 95%;
     height: 20%;
-    background-color: teal;
+    background-color: rgba(136, 135, 135, 0.705);
     font-size: 1.25rem;
     text-align: center;
     margin: 1rem 10px 15% 10px;
@@ -86,10 +87,12 @@ nav {
     border-radius: 15px;
 }
 
+/* 4 answer options */
 .options {
     padding: 1.25rem 1.875rem;
-    background-color: teal;
+    background-color:  rgba(136, 135, 135, 0.705);
     width: 50%;
+    border-radius: 20px;
     text-align: center;
     margin: 40px auto;
     transition: transform 300ms linear;
@@ -107,7 +110,7 @@ nav {
 /* top part of the sidebar  */
 .question-number {
     height: 33%;
-    background-color: green;
+    background-color: rgba(0, 95, 0, 0.726);
     font-size: 2.35rem;
     border-radius: 20px;
     display: flex;
@@ -117,7 +120,7 @@ nav {
 
 /* middle part of the sidebar */
 .correct-answers {
-    background-color: orange;
+    background-color: rgba(255, 123, 0, 0.664);
     height: 33%;
     border-radius: 20px;
     display: flex;
@@ -147,7 +150,7 @@ nav {
 
 /* bottom part of the sidebar */
 .quiz-timer {
-    background-color: yellow;
+    background-color: rgba(255, 251, 0, 0.87);
     border-radius: 20px;
     height: 33%;
     display: flex;
@@ -181,4 +184,12 @@ nav {
     background-color: rgb(0, 81, 255);
     color: white;
     border-radius: 10px;
+}
+
+.correct {
+    background-color: greenyellow;
+}
+
+.wrong {
+    background-color: red;
 }
