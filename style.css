@@ -72,10 +72,22 @@ nav {
 
 .question {
     text-align: center;
-    margin: 50px 10px 50px 10px
+    margin: 3.125rem 10px 15% 10px
 }
 
 .options {
-    padding: 20px 30px;
+    padding: 1.25rem 1.875rem;
     background-color: orchid;
+    width: 50%;
+    text-align: center;
+    margin: 40px auto;
+    transition: transform 300ms linear;
+}
+
+.options:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    transform: translate(10px, -10px)
+
 }
