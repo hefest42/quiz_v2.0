@@ -5,6 +5,7 @@ body {
     background-color: rgb(224, 224, 224);
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 700;
+    overflow: hidden;
 }
 
 nav {
@@ -46,38 +47,48 @@ nav {
 /* quiz container */
 
 .quiz-container {
-    background-color: teal;
-    width: 60%;
+    width: 90vh;
     height: 60vh;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
     display: flex;
+    grid-gap: 10px;
 }
 
+/* left side of .quiz-container */
 .quiz-questions {
-    background-color: tomato;
+    /* background-color: tomato; */
     flex: 1;
     width: 50%;
     height: 100%;
 }
 
+/* right side of .quiz-container */
 .quiz-info {
-    background-color: orange;
     width: 30%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* quiz question and answer options */
 
 .question {
+    width: 95%;
+    height: 20%;
+    background-color: teal;
+    font-size: 1.25rem;
     text-align: center;
-    margin: 3.125rem 10px 15% 10px
+    margin: 1rem 10px 15% 10px;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .options {
     padding: 1.25rem 1.875rem;
-    background-color: orchid;
+    background-color: teal;
     width: 50%;
     text-align: center;
     margin: 40px auto;
@@ -93,25 +104,81 @@ nav {
 
 /* quiz info right of questions */
 
+/* top part of the sidebar  */
 .question-number {
-    height: 30%;
+    height: 33%;
     background-color: green;
-    font-size: 2rem;
+    font-size: 2.35rem;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* middle part of the sidebar */
 .correct-answers {
-    height: 30%;
+    background-color: orange;
+    height: 33%;
+    border-radius: 20px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.correct-top {
+    margin: 30px 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.correct-bottom {
+    margin: 0px 10px 30px 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 
-
 .circle-answer {
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: white;
+}
+
+/* bottom part of the sidebar */
+.quiz-timer {
+    background-color: yellow;
+    border-radius: 20px;
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clock {
+    font-size: 2.35rem;
+}
+
+.bottom-buttons {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 50px;
+}
+
+.next-question {
+    width: 45%;
+    flex: 1;
+    background-color: rgb(0, 81, 255);
+    color: white;
+    border-radius: 10px;
+}
+
+.reset-quiz {
+    width: 45%;
+    flex: 1;
+    background-color: rgb(0, 81, 255);
+    color: white;
+    border-radius: 10px;
 }
