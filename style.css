@@ -89,5 +89,29 @@ nav {
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
     transform: translate(10px, -10px)
+}
 
+/* quiz info right of questions */
+
+.question-number {
+    height: 30%;
+    background-color: green;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.correct-answers {
+    height: 30%;
+    display: flex;
+}
+
+
+
+.circle-answer {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
 }
