@@ -119,9 +119,10 @@ const btnReset = document.querySelector(".reset-quiz"); // restart quiz button
 
 
 let index;
-let correctAnswers;
+let numAnswers;
 let time;
 let playing = 1;
+let startTimer;
 
 // updating the question
 const updateQuestion = function(qst) {
@@ -134,6 +135,17 @@ const updateQuestion = function(qst) {
     // displaying the number of the question
     questionsNumber.textContent = `${index + 1}/10`
 };
+
+const resetOptions = function() {
+    labelOption1.classList.remove("correct");
+    labelOption1.classList.remove("wrong");
+    labelOption2.classList.remove("correct");
+    labelOption2.classList.remove("wrong");
+    labelOption3.classList.remove("correct");
+    labelOption3.classList.remove("wrong");
+    labelOption4.classList.remove("correct");
+    labelOption4.classList.remove("wrong");
+}
 
 // timer function 
 const countDownTimer = function() {
@@ -159,14 +171,15 @@ const countDownTimer = function() {
 
     // calling timer every 1 second
     const callTimer = setInterval(tick, 1000);
+    return callTimer;
 }
-
 
 
 // pressing the start button
 btnStart.addEventListener("click", function(e) {
     e.preventDefault();
 
+    numAnswers = 0;
     // getting a name
     const name = inputName.value.toLowerCase();
     const correctName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -181,15 +194,15 @@ btnStart.addEventListener("click", function(e) {
         //changing the greeting message 
 
         labelWelcome.textContent = `Welcome ${correctName}, good luck!`;
+        // starting the timer
+        time = 300;
+        startTimer = countDownTimer();
     }
 
     // setting index to 0 and updating the question
     index = 0;
     updateQuestion(questions[index]);
 
-    // starting the timer
-    time = 300;
-    countDownTimer()
 });
 
 // pressing the answer buttons
@@ -215,21 +228,31 @@ if (playing === 1) {
 // pressing next question button
 btnNext.addEventListener("click", function(e) {
     e.preventDefault();
-
-    labelOption1.classList.remove("correct");
-    labelOption1.classList.remove("wrong");
-    labelOption2.classList.remove("correct");
-    labelOption2.classList.remove("wrong");
-    labelOption3.classList.remove("correct");
-    labelOption3.classList.remove("wrong");
-    labelOption4.classList.remove("correct");
-    labelOption4.classList.remove("wrong");
-
     index++;
-
-    updateQuestion(questions[index]);
+    
+    resetOptions();
+    
+    if(index < questions.length) {
+    updateQuestion(questions[index])
+    } else if (index === questions.length){
+        clearInterval(startTimer)
+    }
 })
 
-if (index === 11) {
-    playing = 0
-}
+// pressing the reset button
+btnReset.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    time = 300;
+    resetOptions();
+
+    // reseting to the first question
+    index = 0;
+    updateQuestion(questions[index])
+
+    // reseting circles to white
+    circleAnswer.forEach(element => {
+        element.classList.remove("correct");
+        element.classList.remove("wrong");
+    });
+})
