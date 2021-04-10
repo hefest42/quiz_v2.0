@@ -45,14 +45,22 @@ const question5 = {
     correct: 3,
 }
 
+const questions = [question1, question2, question3, question4, question5];
+
+
 // nav bar
 const inputName = document.querySelector(".input-name"); // input name for the player
 const btnStart = document.querySelector(".start-game"); // button start
+const labelWelcome = document.querySelector(".welcome-msg"); // welcome message 
 
 // quiz 
 const quizContainer = document.querySelector(".quiz-container"); // the whole quiz section
 const labelQuestion = document.querySelector(".question"); // questions text
 const questionOptions = document.querySelectorAll(".options"); // all 4 answer options
+const labelOption1 = document.querySelector(".answer1") // first answer option
+const labelOption2 = document.querySelector(".answer2") // second answer option
+const labelOption3 = document.querySelector(".answer3") // third answer option
+const labelOption4 = document.querySelector(".answer4") // fourth answer option
 
 // top right of questions
 const questionsNumber = document.querySelector(".number-qst"); // 0/10 label for the number of the quesitons
@@ -68,5 +76,67 @@ const btnReset = document.querySelector(".reset-quiz"); // restart quiz button
 
 let index;
 let correctAnswer;
-let time = 20;
+let time = 10;
+let playing;
 
+// updating the question
+const updateQuestion = function(qst) {
+    labelQuestion.textContent = qst.question;
+    labelOption1.textContent = qst.option1;
+    labelOption2.textContent = qst.option2;
+    labelOption3.textContent = qst.option3;
+    labelOption4.textContent = qst.option4; 
+};
+
+// timer function 
+const countDownTimer = function() {
+    const tick = function() {
+        const minute = String(Math.trunc(time / 60)).padStart(2, 0);
+        const second = String(Math.trunc(time % 60)).padStart(2, 0);
+        // console.log(`${minute}:${second}`)
+        
+        quizTimer.textContent = `${minute}:${second}`;
+        
+        if(time === 0) {
+            clearInterval(callTimer)
+            quizContainer.classList.add("hidden");
+            labelWelcome.textContent = `Sorry, you ran out of time. Try Again!`
+        }
+        
+        time--
+    }
+    tick();
+
+    const callTimer = setInterval(tick, 1000);
+}
+
+
+
+// pressing the start button
+btnStart.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    // getting a name
+    const name = inputName.value.toLowerCase();
+    const correctName = name.charAt(0).toUpperCase() + name.slice(1);
+
+    // clearing the input field
+    inputName.value = "";
+
+    
+    // displaying the UI
+    if(name) {
+        quizContainer.classList.remove("hidden");
+        //changing the greeting message 
+
+        labelWelcome.textContent = `Welcome ${correctName}, good luck!`;
+    }
+
+    // setting index to 0 and updating the question
+    index = 0;
+    updateQuestion(questions[index]);
+
+    // starting the timer
+    time = 10;
+    countDownTimer()
+})
