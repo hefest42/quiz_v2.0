@@ -75,9 +75,9 @@ const btnReset = document.querySelector(".reset-quiz"); // restart quiz button
 
 
 let index;
-let correctAnswer;
-let time = 10;
-let playing;
+let correctAnswers;
+let time;
+let playing = 1;
 
 // updating the question
 const updateQuestion = function(qst) {
@@ -86,6 +86,9 @@ const updateQuestion = function(qst) {
     labelOption2.textContent = qst.option2;
     labelOption3.textContent = qst.option3;
     labelOption4.textContent = qst.option4; 
+
+    // displaying the number of the question
+    questionsNumber.textContent = `${index + 1}/10`
 };
 
 // timer function 
@@ -95,18 +98,22 @@ const countDownTimer = function() {
         const second = String(Math.trunc(time % 60)).padStart(2, 0);
         // console.log(`${minute}:${second}`)
         
+        // update the UI with the timer
         quizTimer.textContent = `${minute}:${second}`;
         
+        // if timer runs out
         if(time === 0) {
             clearInterval(callTimer)
             quizContainer.classList.add("hidden");
             labelWelcome.textContent = `Sorry, you ran out of time. Try Again!`
         }
         
+        // decrement timer
         time--
     }
     tick();
 
+    // calling timer every 1 second
     const callTimer = setInterval(tick, 1000);
 }
 
@@ -137,6 +144,25 @@ btnStart.addEventListener("click", function(e) {
     updateQuestion(questions[index]);
 
     // starting the timer
-    time = 10;
+    time = 300;
     countDownTimer()
-})
+});
+
+// pressing the answer buttons
+if (playing === 1) {
+    for (let i = 0; i < questionOptions.length; i++) {
+        questionOptions[i].addEventListener("click", function(e) {
+            e.preventDefault();
+            
+            const answer = Number(questionOptions[i].getAttribute("data-value"));
+
+            if(answer === questions[index].correct) {
+                circleAnswer[index].classList.add("correct");
+                questionOptions[answer - 1].classList.add("correct");
+            } else {
+                circleAnswer[index].classList.add("wrong");
+                questionOptions[answer - 1].classList.add("wrong")
+            }
+        })
+    }
+}
