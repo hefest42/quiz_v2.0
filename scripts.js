@@ -1,27 +1,49 @@
 "use strict"
 
 const question1 = {
-    question: ,
-    option1: ,
-    option2: ,
-    option3: ,
-    option4: ,
-    correct: ,
+    question: "What eminent scientist hosted the television show Cosmos?",
+    option1: "Stephen Hawking",
+    option2: "Jacob Bronowski",
+    option3: "Carl Sagan",
+    option4: "Albert Einstein",
+    correct: 3,
 }
 
+const question2 = {
+    question: "Which song has not won a Eurovision competition?",
+    option1: "La, La, La",
+    option2: "Ne partez pas sans moi",
+    option3: "Pump Pump",
+    option4: "Ding-a-Dong",
+    correct: 3,
+}
 
+const question3 = {
+    question: "In which of these countries did manga originate?",
+    option1: "China",
+    option2: "Japan",
+    option3: "Canada",
+    option4: "Korea",
+    correct: 2,
+}
 
+const question4 = {
+    question: "Who is the voice of remy the Rat in Ratatouille",
+    option1: "Will Geer",
+    option2: "Will Patton",
+    option3: "Brad Garrett",
+    option4: "Patton Oswalt",
+    correct: 4,
+}
 
-
-
-
-
-
-
-
-
-
-
+const question5 = {
+    question: `Who Played the role of Fox Mulder in the American television series "The X-Files"`,
+    option1: "Lindsey Ginter",
+    option2: "Dean Haglund",
+    option3: "David Duchovny",
+    option4: "Tim Daly",
+    correct: 3,
+}
 
 // nav bar
 const inputName = document.querySelector(".input-name"); // input name for the player
@@ -43,4 +65,8 @@ const quizTimer = document.querySelector(".clock"); // countdown timer
 const btnNext = document.querySelector(".next-question"); // next question button
 const btnReset = document.querySelector(".reset-quiz"); // restart quiz button
 
+
+let index;
+let correctAnswer;
+let time = 20;
 
