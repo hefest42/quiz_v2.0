@@ -255,4 +255,11 @@ btnReset.addEventListener("click", function(e) {
         element.classList.remove("correct");
         element.classList.remove("wrong");
     });
+
+    // start the timer
+    if(startTimer) {
+        clearInterval(startTimer)
+    }
+    startTimer = countDownTimer();
+    
 })
