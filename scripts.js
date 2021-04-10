@@ -45,7 +45,51 @@ const question5 = {
     correct: 3,
 }
 
-const questions = [question1, question2, question3, question4, question5];
+const question6 = {
+    question: `Gangnam Style, a humourous pop song by South Korean singer Psy was released in which year?`,
+    option1: "2008",
+    option2: "2013",
+    option3: "2010",
+    option4: "2012",
+    correct: 4,
+}
+
+const question7 = {
+    question: `In which film did Audrey Hepburn play the character of Holly Golightly`,
+    option1: "How to steam a Million",
+    option2: "Breakfast at Tiffany's",
+    option3: "Roman Holiday",
+    option4: "Sabrina",
+    correct: 2,
+}
+const question8 = {
+    question: `Which singer is known as the "King of Rock and Roll"`,
+    option1: "Elvis Presley",
+    option2: "Justin Bieber",
+    option3: "Chuck Berry",
+    option4: "Bruce Springsteen",
+    correct: 1,
+}
+const question9 = {
+    question: `Which annual arts festival is held annually in the Black Rock Desert, northwestern Nevada, U.S.?`,
+    option1: "Burning Man",
+    option2: "The Fringe",
+    option3: "Te Matatini",
+    option4: "Documenta",
+    correct: 1,
+}
+const question10 = {
+    question: `Black Panther belongs to which fictional African country`,
+    option1: "Wakanda",
+    option2: "Latveria",
+    option3: "Krakoa",
+    option4: "Vorozheika",
+    correct: 1,
+}
+
+
+
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
 
 // nav bar
@@ -165,4 +209,27 @@ if (playing === 1) {
             }
         })
     }
+}
+
+
+// pressing next question button
+btnNext.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    labelOption1.classList.remove("correct");
+    labelOption1.classList.remove("wrong");
+    labelOption2.classList.remove("correct");
+    labelOption2.classList.remove("wrong");
+    labelOption3.classList.remove("correct");
+    labelOption3.classList.remove("wrong");
+    labelOption4.classList.remove("correct");
+    labelOption4.classList.remove("wrong");
+
+    index++;
+
+    updateQuestion(questions[index]);
+})
+
+if (index === 11) {
+    playing = 0
 }
